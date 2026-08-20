@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Instrument Serif", serif;
+  --font-sans: "Manrope", sans-serif;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "DriftWall Showcase",
+  "description": "A website featuring the DriftWall interactive background component.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
