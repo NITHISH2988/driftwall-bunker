@@ -42,10 +42,26 @@ const items = [
 ];
 
 const ONE_PIECE_TRACKS: Track[] = [
-  { title: "Overtaken", url: "/one_piece_overtaken.mp3", duration: "2:10" },
-  { title: "The Very Very Strongest", url: "/very_strongest.mp3", duration: "1:45" },
-  { title: "Binks Sake", url: "/binks_sake.mp3", duration: "3:10" },
-  { title: "We Are!", url: "/we_are.mp3", duration: "4:00" },
+  {
+    title: "Runaway",
+    url: "/AURORA - Runaway.mp3",
+  },
+  {
+    title: "Moral Of The Story",
+    url: "/Ashe - Moral Of The Story (Lyrics).mp3",
+  },
+  {
+    title: "Golden Hour",
+    url: "/Golden Hour.mp3",
+  },
+  {
+    title: "Binks",
+    url: "/binks.mp3",
+  },
+  {
+    title: "Sailor Song",
+    url: "/gigi_perez_sailor_song_official_audio_mp3_60766.mp3",
+  },
 ];
 
 export default function App() {
