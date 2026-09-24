@@ -41,6 +41,7 @@ function LoginPage() {
           <div className="login-actions"><p className="text-sm text-muted">Google sign-in needs this deployment connected to a Supabase project.</p></div>
         )}
         <p className="login-terms">Secure sign-in · Your notes stay yours</p>
+        <Link to="/privacy" className="login-privacy">Privacy</Link>
         <Link to="/" className="login-back">Back to Hearth</Link>
       </section>
       <aside className="login-art" aria-label="Study practice overview">

@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as LogRouteImport } from './routes/log'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProblemsRouteImport } from './routes/problems'
 import { Route as ProblemsIdRouteImport } from './routes/problems.$id'
 
@@ -36,6 +37,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProblemsRoute = ProblemsRouteImport.update({
   id: '/problems',
   path: '/problems',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/insights': typeof InsightsRoute
   '/log': typeof LogRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/problems': typeof ProblemsRouteWithChildren
   '/problems/$id': typeof ProblemsIdRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/insights': typeof InsightsRoute
   '/log': typeof LogRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/problems': typeof ProblemsRouteWithChildren
   '/problems/$id': typeof ProblemsIdRoute
 }
@@ -69,21 +77,36 @@ export interface FileRoutesById {
   '/insights': typeof InsightsRoute
   '/log': typeof LogRoute
   '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
   '/problems': typeof ProblemsRouteWithChildren
   '/problems/$id': typeof ProblemsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/insights' | '/log' | '/login' | '/problems' | '/problems/$id'
+    | '/'
+    | '/insights'
+    | '/log'
+    | '/login'
+    | '/privacy'
+    | '/problems'
+    | '/problems/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/insights' | '/log' | '/login' | '/problems' | '/problems/$id'
+  to:
+    | '/'
+    | '/insights'
+    | '/log'
+    | '/login'
+    | '/privacy'
+    | '/problems'
+    | '/problems/$id'
   id:
     | '__root__'
     | '/'
     | '/insights'
     | '/log'
     | '/login'
+    | '/privacy'
     | '/problems'
     | '/problems/$id'
   fileRoutesById: FileRoutesById
@@ -93,6 +116,7 @@ export interface RootRouteChildren {
   InsightsRoute: typeof InsightsRoute
   LogRoute: typeof LogRoute
   LoginRoute: typeof LoginRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProblemsRoute: typeof ProblemsRouteWithChildren
 }
 
@@ -124,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/problems': {
@@ -160,6 +191,7 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsRoute: InsightsRoute,
   LogRoute: LogRoute,
   LoginRoute: LoginRoute,
+  PrivacyRoute: PrivacyRoute,
   ProblemsRoute: ProblemsRouteWithChildren,
 }
 export const routeTree = rootRouteImport

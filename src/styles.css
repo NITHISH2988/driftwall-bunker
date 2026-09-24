@@ -174,6 +174,16 @@ body::after {
 .login-provider { min-height: 3.15rem; justify-content: center; border: 1px solid color-mix(in oklab, var(--color-ember) 42%, var(--color-border)); background: var(--color-surface-2); color: var(--color-fg); }
 .login-provider:hover { background: color-mix(in oklab, var(--color-ember) 12%, var(--color-surface-2)); }
 .login-terms { margin-top: 1.2rem; color: var(--color-subtle); font-size: .72rem; }
+.login-privacy { display: inline-block; margin-top: .55rem; color: var(--color-subtle); font-size: .72rem; text-decoration: underline; text-underline-offset: 3px; }
+.policy-page { min-height: 100dvh; padding: clamp(1.25rem, 5vw, 4rem) 1rem; background: var(--color-background); color: var(--color-foreground); }
+.policy-card { width: min(100%, 48rem); margin: 0 auto; padding: clamp(1.5rem, 5vw, 3.5rem); border: 1px solid var(--color-border); border-radius: 1.5rem; background: var(--color-card); box-shadow: 0 24px 80px rgb(0 0 0 / .2); }
+.policy-brand { display: inline-block; color: var(--color-foreground); font-family: Fraunces, serif; font-size: 1.5rem; text-decoration: none; }
+.policy-eyebrow { margin-top: 2rem; color: var(--color-subtle); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+.policy-card h1 { margin: .5rem 0 1rem; font-family: Fraunces, serif; font-size: clamp(2.5rem, 7vw, 4rem); line-height: 1; }
+.policy-card h2 { margin: 2rem 0 .55rem; font-size: 1rem; font-weight: 650; }
+.policy-card p { color: var(--color-muted-foreground); line-height: 1.8; }
+.policy-card a:not(.policy-brand):not(.policy-back) { color: var(--color-primary); text-underline-offset: 3px; }
+.policy-back { display: inline-block; margin-top: 2.5rem; color: var(--color-foreground); font-size: .9rem; text-underline-offset: 3px; }
 .login-back { display: inline-block; margin-top: 1.7rem; color: var(--color-subtle); font-size: .78rem; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 4px; }
 .login-back:hover { color: var(--color-fg); text-decoration-color: currentColor; }
 .login-art { position: relative; display: grid; min-height: min(69vh, 680px); place-items: center; overflow: hidden; border: 1px solid color-mix(in oklab, var(--color-ember) 18%, transparent); border-radius: 34px; background: radial-gradient(ellipse at 50% 42%, color-mix(in oklab, var(--color-ember) 16%, var(--color-surface)) 0%, var(--color-bg) 62%); }

@@ -65,10 +65,12 @@ function ProtectedApp() {
   const { user, isPending } = useCurrentUserState();
   // The sign-in page must remain reachable while all study data stays private.
   const isLogin = pathname === "/login";
+  const isPublicPolicy = pathname === "/privacy";
   if (isPending && !isLogin) {
+    if (isPublicPolicy) return <Outlet />;
     return <div className="mx-auto grid min-h-dvh max-w-6xl content-start gap-5 px-6 py-10"><Skeleton className="h-10 w-48" /><Skeleton className="h-52" /><Skeleton className="h-48" /></div>;
   }
-  if (!user && !isLogin) return <RedirectToSignIn />;
-  if (isLogin) return <Outlet />;
+  if (!user && !isLogin && !isPublicPolicy) return <RedirectToSignIn />;
+  if (isLogin || isPublicPolicy) return <Outlet />;
   return <StoreHydration><AppShell><Outlet /></AppShell></StoreHydration>;
 }
