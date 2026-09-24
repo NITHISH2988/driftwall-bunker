@@ -1,5 +1,10 @@
-﻿node_modules
-dist
+node_modules/
+.vercel/
+.tanstack/
+.grok/
 .env
 .env.*
 !.env.example
+work-build.log
+*.log
+AGENTS.md

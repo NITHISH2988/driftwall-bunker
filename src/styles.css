@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+
+  --color-bg: #130e0b;
+  --color-elevated: #181714;
+  --color-surface: #201f1b;
+  --color-surface-2: #292822;
+  --color-fg: #f5f0e6;
+  --color-muted: #b8b2a5;
+  --color-subtle: #898477;
+  --color-primary: #b8804d;
+  --color-primary-fg: #1a100c;
+  --color-ember: #d9a36c;
+  --color-sage: #9aa088;
+  --color-danger: #c45c4a;
+  --color-border: color-mix(in oklab, var(--color-fg) 12%, transparent);
+  --color-ring: #c96b4a;
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-card: var(--color-surface);
+  --color-card-foreground: var(--color-fg);
+  --color-popover: var(--color-surface-2);
+  --color-popover-foreground: var(--color-fg);
+  --color-muted-foreground: var(--color-muted);
+  --color-accent: var(--color-surface-2);
+  --color-accent-foreground: var(--color-fg);
+  --color-destructive: var(--color-danger);
+  --color-input: color-mix(in oklab, var(--color-fg) 14%, transparent);
+  --color-secondary: var(--color-surface-2);
+  --color-secondary-foreground: var(--color-fg);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius: 12px;
+
+  --shadow-border: 0 0 0 1px color-mix(in oklab, var(--color-fg) 10%, transparent);
+  --shadow-border-hover: 0 0 0 1px color-mix(in oklab, var(--color-fg) 18%, transparent);
+  --shadow-lift: 0 18px 40px -24px rgb(8 5 3 / 0.7);
+
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-primary) 40%, transparent);
+    color: var(--color-fg);
+  }
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(920px 540px at 4% 0%, color-mix(in oklab, var(--color-primary) 9%, transparent), transparent 72%),
+    radial-gradient(700px 440px at 100% 100%, color-mix(in oklab, #5a503a 14%, transparent), transparent 70%);
+}
+
+body::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+#app-root {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes hearth-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.stagger-in > * {
+  animation: hearth-rise 420ms var(--ease-smooth-out) both;
+}
+.stagger-in > *:nth-child(1) { animation-delay: 40ms; }
+.stagger-in > *:nth-child(2) { animation-delay: 90ms; }
+.stagger-in > *:nth-child(3) { animation-delay: 140ms; }
+.stagger-in > *:nth-child(4) { animation-delay: 190ms; }
+.stagger-in > *:nth-child(5) { animation-delay: 240ms; }
+.stagger-in > *:nth-child(6) { animation-delay: 290ms; }
+
+@keyframes ember-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.ember-dot {
+  animation: ember-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger-in > *,
+  .ember-dot {
+    animation: none !important;
+  }
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.account-pill { display: flex; min-width: 0; align-items: center; gap: .65rem; padding: .55rem .65rem; border: 1px solid var(--color-border); border-radius: 14px; background: color-mix(in oklab, var(--color-surface) 80%, transparent); }
+.account-avatar { display: grid; width: 2.25rem; height: 2.25rem; flex: none; place-items: center; border: 1px solid color-mix(in oklab, var(--color-ember) 45%, transparent); border-radius: 999px; background: color-mix(in oklab, var(--color-ember) 14%, transparent); color: var(--color-ember); font-weight: 600; }
+.account-signout { margin-left: auto; border: 0; background: transparent; color: var(--color-subtle); font-size: .72rem; }
+.account-signout:hover { color: var(--color-fg); }
+
+.login-page { position: relative; z-index: 2; display: grid; min-height: 100dvh; grid-template-columns: 1fr minmax(320px, .92fr); gap: clamp(2rem, 8vw, 8rem); align-items: center; padding: clamp(1.25rem, 6vw, 6rem); overflow: hidden; }
+.login-card { width: min(100%, 450px); justify-self: center; }
+.login-brand { display: flex; align-items: center; gap: .7rem; font-size: 1.05rem; font-weight: 600; letter-spacing: -.03em; }
+.login-mark { display: grid; width: 2.4rem; height: 2.4rem; place-items: center; border-radius: 12px; background: color-mix(in oklab, var(--color-ember) 16%, transparent); color: var(--color-ember); }
+.login-eyebrow { margin-top: 3.25rem; color: var(--color-ember); font-size: .73rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+.login-card h1 { margin-top: .7rem; font-size: clamp(2.7rem, 5.2vw, 4.25rem); font-weight: 500; line-height: 1.03; letter-spacing: -.055em; }
+.login-card h1 em { color: var(--color-ember); font-weight: 500; }
+.login-copy { max-width: 390px; margin-top: 1.2rem; color: var(--color-muted); font-size: .96rem; line-height: 1.75; }
+.login-benefits { display: grid; gap: .85rem; margin-top: 1.7rem; color: var(--color-muted); font-size: .83rem; }
+.login-benefits div { display: flex; align-items: center; gap: .65rem; }
+.login-benefits svg { width: 1rem; height: 1rem; color: var(--color-sage); }
+.login-actions { display: grid; gap: .7rem; margin-top: 2rem; }
+.login-provider { min-height: 3.15rem; justify-content: center; border: 1px solid color-mix(in oklab, var(--color-ember) 42%, var(--color-border)); background: var(--color-surface-2); color: var(--color-fg); }
+.login-provider:hover { background: color-mix(in oklab, var(--color-ember) 12%, var(--color-surface-2)); }
+.login-terms { margin-top: 1.2rem; color: var(--color-subtle); font-size: .72rem; }
+.login-back { display: inline-block; margin-top: 1.7rem; color: var(--color-subtle); font-size: .78rem; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 4px; }
+.login-back:hover { color: var(--color-fg); text-decoration-color: currentColor; }
+.login-art { position: relative; display: grid; min-height: min(69vh, 680px); place-items: center; overflow: hidden; border: 1px solid color-mix(in oklab, var(--color-ember) 18%, transparent); border-radius: 34px; background: radial-gradient(ellipse at 50% 42%, color-mix(in oklab, var(--color-ember) 16%, var(--color-surface)) 0%, var(--color-bg) 62%); }
+.art-orbit { position: absolute; width: min(62vw, 560px); aspect-ratio: 1; border: 1px solid color-mix(in oklab, var(--color-ember) 12%, transparent); border-radius: 50%; }
+.orbit-two { width: min(47vw, 415px); border-style: dashed; border-color: color-mix(in oklab, var(--color-ember) 18%, transparent); }
+.art-note { position: relative; width: min(330px, 75%); padding: 2rem; border: 1px solid color-mix(in oklab, var(--color-ember) 24%, transparent); border-radius: 22px; background: color-mix(in oklab, var(--color-surface) 91%, transparent); box-shadow: 0 32px 100px -45px #000; transform: rotate(-3deg); }
+.art-note-tag { display: block; color: var(--color-ember); font-size: .61rem; font-weight: 600; letter-spacing: .16em; }
+.art-note strong { display: block; margin-top: 1.2rem; font-family: var(--font-display); font-size: 2.1rem; font-weight: 500; line-height: 1.13; letter-spacing: -.035em; }
+.art-note-rule { display: block; height: 1px; margin: 1.7rem 0 1rem; background: var(--color-border); }
+.art-note-meta { display: flex; justify-content: space-between; color: var(--color-muted); font-size: .72rem; }
+.art-progress { height: 5px; margin-top: .7rem; overflow: hidden; border-radius: 999px; background: var(--color-surface-2); }
+.art-progress span { display: block; width: 64%; height: 100%; border-radius: inherit; background: var(--color-ember); }
+.art-caption { position: absolute; right: 2rem; bottom: 1.7rem; color: var(--color-subtle); font-family: var(--font-display); font-size: 1.15rem; font-style: italic; }
+.art-spark { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--color-ember); box-shadow: 0 0 20px 5px color-mix(in oklab, var(--color-ember) 38%, transparent); }
+.spark-one { top: 25%; left: 23%; }.spark-two { right: 21%; bottom: 26%; width: 4px; height: 4px; }
+@media (max-width: 760px) { .login-page { min-height: 100dvh; grid-template-columns: 1fr; align-content: center; padding: 1.5rem; }.login-card { padding-block: 1rem; }.login-eyebrow { margin-top: 2.25rem; }.login-art { display: none; } }
