@@ -24,6 +24,7 @@ do $$
 begin
   if exists (select 1 from pg_roles where rolname = 'authenticated') then
     execute 'grant select, insert, update, delete on practice_problems to authenticated';
+    execute 'drop policy if exists practice_problems_owner on practice_problems';
     execute 'create policy practice_problems_owner on practice_problems to authenticated using (auth.uid()::text = user_id) with check (auth.uid()::text = user_id)';
   end if;
   if exists (select 1 from pg_roles where rolname = 'anon') then

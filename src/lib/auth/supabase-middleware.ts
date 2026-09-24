@@ -11,5 +11,5 @@ export const authMiddleware = createMiddleware({ type: "function" })
     const { getSupabaseUserId } = await import("./supabase-auth.server");
     assertSameSiteRequest();
     const userId = await getSupabaseUserId(context.accessToken);
-    return next({ context: { userId } });
+    return next({ context: { userId, accessToken: context.accessToken } });
   });
