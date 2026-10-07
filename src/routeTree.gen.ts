@@ -10,114 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as InsightsRouteImport } from './routes/insights'
-import { Route as LogRouteImport } from './routes/log'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as ProblemsRouteImport } from './routes/problems'
-import { Route as ProblemsIdRouteImport } from './routes/problems.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const InsightsRoute = InsightsRouteImport.update({
-  id: '/insights',
-  path: '/insights',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LogRoute = LogRouteImport.update({
-  id: '/log',
-  path: '/log',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProblemsRoute = ProblemsRouteImport.update({
-  id: '/problems',
-  path: '/problems',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProblemsIdRoute = ProblemsIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => ProblemsRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/insights': typeof InsightsRoute
-  '/log': typeof LogRoute
-  '/login': typeof LoginRoute
-  '/privacy': typeof PrivacyRoute
-  '/problems': typeof ProblemsRouteWithChildren
-  '/problems/$id': typeof ProblemsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/insights': typeof InsightsRoute
-  '/log': typeof LogRoute
-  '/login': typeof LoginRoute
-  '/privacy': typeof PrivacyRoute
-  '/problems': typeof ProblemsRouteWithChildren
-  '/problems/$id': typeof ProblemsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/insights': typeof InsightsRoute
-  '/log': typeof LogRoute
-  '/login': typeof LoginRoute
-  '/privacy': typeof PrivacyRoute
-  '/problems': typeof ProblemsRouteWithChildren
-  '/problems/$id': typeof ProblemsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/insights'
-    | '/log'
-    | '/login'
-    | '/privacy'
-    | '/problems'
-    | '/problems/$id'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/insights'
-    | '/log'
-    | '/login'
-    | '/privacy'
-    | '/problems'
-    | '/problems/$id'
-  id:
-    | '__root__'
-    | '/'
-    | '/insights'
-    | '/log'
-    | '/login'
-    | '/privacy'
-    | '/problems'
-    | '/problems/$id'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  InsightsRoute: typeof InsightsRoute
-  LogRoute: typeof LogRoute
-  LoginRoute: typeof LoginRoute
-  PrivacyRoute: typeof PrivacyRoute
-  ProblemsRoute: typeof ProblemsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -129,70 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/insights': {
-      id: '/insights'
-      path: '/insights'
-      fullPath: '/insights'
-      preLoaderRoute: typeof InsightsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/log': {
-      id: '/log'
-      path: '/log'
-      fullPath: '/log'
-      preLoaderRoute: typeof LogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/problems': {
-      id: '/problems'
-      path: '/problems'
-      fullPath: '/problems'
-      preLoaderRoute: typeof ProblemsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/problems/$id': {
-      id: '/problems/$id'
-      path: '/$id'
-      fullPath: '/problems/$id'
-      preLoaderRoute: typeof ProblemsIdRouteImport
-      parentRoute: typeof ProblemsRoute
-    }
   }
 }
 
-interface ProblemsRouteChildren {
-  ProblemsIdRoute: typeof ProblemsIdRoute
-}
-
-const ProblemsRouteChildren: ProblemsRouteChildren = {
-  ProblemsIdRoute: ProblemsIdRoute,
-}
-
-const ProblemsRouteWithChildren = ProblemsRoute._addFileChildren(
-  ProblemsRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  InsightsRoute: InsightsRoute,
-  LogRoute: LogRoute,
-  LoginRoute: LoginRoute,
-  PrivacyRoute: PrivacyRoute,
-  ProblemsRoute: ProblemsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
