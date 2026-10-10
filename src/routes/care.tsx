@@ -123,7 +123,7 @@ function Care() {
             <div className="care-team-names"><h3>Venkata Harish</h3><h3>Sadineni Nithish</h3></div>
           </div>
           <div className="care-team-person" data-reveal>
-            <span className="care-team-role">Freelance contributor</span>
+            <span className="care-team-role">Free worker</span>
             <div className="care-team-names"><h3>V. siddardha</h3></div>
           </div>
         </div>
