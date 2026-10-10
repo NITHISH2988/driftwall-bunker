@@ -1,7 +1,8 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 import { AmbientToggle } from "@/lib/ambient-toggle";
+import { useScrollReveal } from "@/lib/use-scroll-reveal";
 
 export const Route = createFileRoute("/")({ component: EsperStudio });
 
@@ -10,20 +11,7 @@ const CONTACT = "support.esper@gmail.com";
 function EsperStudio() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sent, setSent] = useState(false);
-
-  useEffect(() => {
-    const items = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
-    items.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
-  }, []);
+  useScrollReveal();
 
   function sendBrief(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -67,6 +55,7 @@ function EsperStudio() {
             Start a project <ArrowUpRight size={15} />
           </a>
         </nav>
+        <AmbientToggle />
       </header>
 
       <section className="hero section-wrap" id="top">
@@ -168,7 +157,6 @@ function EsperStudio() {
         <a className="wordmark footer-wordmark" href="#top"><span className="wordmark-symbol" aria-hidden="true"><i /><i /><i /></span><span>esper<span className="wordmark-light"> studio</span></span></a>
         <p>Thoughtful websites for the next version of your business.</p>
         <a className="back-top" href="/care">Care plans ↗</a>
-        <AmbientToggle />
         <a className="back-top" href="#top">Back to top ↑</a>
         <span className="copyright">© {new Date().getFullYear()} Esper Studio</span>
       </footer>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowLeft, ArrowUpRight, Check, Clock3, Sparkles } from "lucide-react";
 import { AmbientToggle } from "@/lib/ambient-toggle";
+import { useScrollReveal } from "@/lib/use-scroll-reveal";
 
 export const Route = createFileRoute("/care")({
   head: () => ({
@@ -40,6 +41,7 @@ const plans = [
 ];
 
 function Care() {
+  useScrollReveal();
   return (
     <main className="esper-site care-site">
       <header className="site-header">
@@ -48,6 +50,7 @@ function Care() {
           <a href="/#work">Selected work</a><a href="/#approach">What we do</a><a href="/">Studio</a>
           <a className="nav-contact glass-button" href={`mailto:${contact}?subject=${encodeURIComponent("Ask about a care plan")}`}>Ask about care <ArrowUpRight size={15} /></a>
         </nav>
+        <AmbientToggle />
       </header>
 
       <section className="care-hero section-wrap" id="top">
@@ -111,7 +114,7 @@ function Care() {
 
       <footer className="site-footer section-wrap care-footer">
         <a className="wordmark footer-wordmark" href="/"><span className="wordmark-symbol" aria-hidden="true"><i /><i /><i /></span><span>esper<span className="wordmark-light"> studio</span></span></a>
-        <p>Thoughtful websites for the next version of your business.</p><AmbientToggle />
+        <p>Thoughtful websites for the next version of your business.</p>
         <a className="back-top" href="#top">Back to top ↑</a><span className="copyright">© {new Date().getFullYear()} Esper Studio · <a href={`mailto:${contact}`}>{contact}</a></span>
       </footer>
     </main>
