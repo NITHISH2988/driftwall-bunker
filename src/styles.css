@@ -444,4 +444,8 @@ a { color: inherit; text-decoration: none; }
   .site-header { padding-inline: 14px; gap: 7px; }
   .site-header > .ambient-toggle { min-height: 36px; gap: 5px; padding-inline: 8px; font-size: 9px; }
   .menu-toggle { width: 37px; height: 37px; }
+  .ambient-toggle span { display: none; }
+  .site-header > .ambient-toggle { width: 36px; min-width: 36px; padding: 0; }
+  .care-nav a[href="/"] { display: none; }
+  .care-nav .nav-contact svg { display: none; }
 }

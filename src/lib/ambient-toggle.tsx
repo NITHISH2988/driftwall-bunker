@@ -20,12 +20,20 @@ export function AmbientToggle() {
 
       // A quiet, slowly shifting two-note pad generated in the browser. No audio
       // file, tracking, or autoplay is used.
-      [174.61, 220].forEach((frequency, index) => {
+      [174.61, 220, 261.63].forEach((frequency, index) => {
         const oscillator = context.createOscillator();
         const voice = context.createGain();
         oscillator.type = "sine";
         oscillator.frequency.value = frequency;
-        voice.gain.value = index === 0 ? 0.72 : 0.28;
+        voice.gain.value = [0.54, 0.3, 0.16][index];
+        const drift = context.createOscillator();
+        const driftAmount = context.createGain();
+        drift.type = "sine";
+        drift.frequency.value = 0.055 + index * 0.018;
+        driftAmount.gain.value = 2.2 + index * 0.7;
+        drift.connect(driftAmount);
+        driftAmount.connect(oscillator.detune);
+        drift.start();
         oscillator.connect(voice);
         voice.connect(lowpass);
         oscillator.start();
@@ -47,7 +55,7 @@ export function AmbientToggle() {
   }
 
   return (
-    <button className="ambient-toggle glass-button" type="button" onClick={() => void toggle()} aria-pressed={playing}>
+    <button className="ambient-toggle glass-button" type="button" onClick={() => void toggle()} aria-pressed={playing} aria-label={playing ? "Turn ambient sound off" : "Turn ambient sound on"}>
       {playing ? <Volume2 size={15} /> : <VolumeX size={15} />}
       <span>{playing ? "Sound on" : "Sound off"}</span>
     </button>
