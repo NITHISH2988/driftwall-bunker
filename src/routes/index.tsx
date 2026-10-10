@@ -63,22 +63,11 @@ function EsperStudio() {
           </div>
         </div>
 
-        <div className="hero-art" aria-label="Abstract, layered digital storefront illustration" role="img">
-          <div className="art-grid" />
-          <div className="orbit orbit-a" />
-          <div className="orbit orbit-b" />
-          <div className="sun-disc" />
+        <div className="hero-art">
+          <img className="hero-art-image" src="/images/esper-hero.png" alt="Sculptural forest-green arch opening toward a sunlit horizon" />
           <div className="art-label label-top"><span>ES—01</span><span>Digital, made human</span></div>
-          <div className="site-card site-card-back"><span className="mock-dot" /><span className="mock-line wide" /><span className="mock-line" /><span className="mock-button" /></div>
-          <div className="site-card site-card-front">
-            <div className="mock-nav"><span className="mock-brand">YOUR<br />NEXT</span><span className="mock-menu">MENU&nbsp; +</span></div>
-            <div className="mock-sculpture"><span /><span /><span /></div>
-            <p className="mock-kicker">A NEW KIND OF LOCAL</p>
-            <p className="mock-headline">Good things<br />grow here.</p>
-            <div className="mock-footer"><span>Discover the difference</span><span>↗</span></div>
-          </div>
-          <div className="art-caption"><span className="caption-mark">✳</span><span>Clarity, with character.</span></div>
-          <div className="art-label label-bottom"><span>01 / 04</span><span>Ideas into presence</span></div>
+          <div className="art-stamp"><span>Made for</span><strong>what’s<br /><i>next.</i></strong><span className="stamp-star">✳</span></div>
+          <div className="art-label label-bottom"><span>Ideas into presence</span><span>01 / 03</span></div>
         </div>
 
         <div className="hero-index"><span>01</span><span className="index-rule" /><span>Scroll to explore</span></div>
