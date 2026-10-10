@@ -112,6 +112,23 @@ function Care() {
         </div>
       </section>
 
+      <section className="care-team section-wrap" aria-labelledby="care-team-title">
+        <div className="care-team-heading" data-reveal>
+          <p className="eyebrow">The people behind the studio</p>
+          <h2 id="care-team-title">A little care,<br /><em>from our team.</em></h2>
+        </div>
+        <div className="care-team-list">
+          <div className="care-team-person" data-reveal>
+            <span className="care-team-role">Founders</span>
+            <div className="care-team-names"><h3>Venkata Harish</h3><h3>Sadineni Nithish</h3></div>
+          </div>
+          <div className="care-team-person" data-reveal>
+            <span className="care-team-role">Freelance contributor</span>
+            <div className="care-team-names"><h3>V. siddardha</h3></div>
+          </div>
+        </div>
+      </section>
+
       <footer className="site-footer section-wrap care-footer">
         <a className="wordmark footer-wordmark" href="/"><span className="wordmark-symbol" aria-hidden="true"><i /><i /><i /></span><span>esper<span className="wordmark-light"> studio</span></span></a>
         <p>Thoughtful websites for the next version of your business.</p>
