@@ -126,6 +126,18 @@ function Care() {
             <span className="care-team-role">Free worker</span>
             <div className="care-team-names"><h3>V. siddardha</h3></div>
           </div>
+          <div className="care-team-person" data-reveal>
+            <span className="care-team-role">CEO</span>
+            <div className="care-team-names"><h3>S.M.P. Deekshitulu</h3></div>
+          </div>
+          <div className="care-team-person" data-reveal>
+            <span className="care-team-role">HR</span>
+            <div className="care-team-names"><h3>D. srikar</h3></div>
+          </div>
+          <div className="care-team-person" data-reveal>
+            <span className="care-team-role">One and only unpaid employee</span>
+            <div className="care-team-names"><h3>P. karthik</h3></div>
+          </div>
         </div>
       </section>
 
